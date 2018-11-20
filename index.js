@@ -1,131 +1,57 @@
-import 'core-js/fn/promise'
-import qs from 'query-string'
-import axios from 'axios'
-import Noty from 'noty'
+const antmessage = document.createElement('div')
 
-import message from '@/vanilla-antd-message'
-import '@/vanilla-antd-message/style.less'
-import renderi18n, { i18n } from '@/js/i18n/i18n-static'
-import { isForeign } from '@/js/i18n/lang'
+function Message() {
+	antmessage.classList.add('vanilla-antd-message')
+	document.body.appendChild(antmessage)
+}
 
-import axiosConfig from '../../js/axios-config'
+Message.prototype.show = function (content, type = 'info') {
+	const contentBox = document.createElement('div')
+	const contentDom = document.createElement('span')
+	const icon = document.createElement('i')
+	icon.classList.add(type)
+	icon.classList.add('vanilla-antd-message-icon')
+	contentDom.innerText = content
+	contentBox.classList.add('vanilla-antd-content-box')
+	contentBox.classList.add('animate-in')
+	contentBox.appendChild(icon)
+	contentBox.appendChild(contentDom)
+	contentBox.style.top = `${this.count * 50}px`
+	antmessage.appendChild(contentBox)
 
-import '../../style/main.less'
-import './login.less'
+	this.count++
 
-(() => {
-	renderi18n() // 国际化
-	// 请求配置（各种环境有所区分）
-	axiosConfig()
+	setTimeout(() => {
+		contentBox.classList.add('animate-out')
+		setTimeout(() => {
+			antmessage.removeChild(contentBox)
 
-	Noty.overrideDefaults({
-		layout: 'topCenter',
-		theme: 'semanticui',
-		timeout: 2000
-	})
-
-	const switchType = document.getElementById('switch-type')
-	const switchTypeDesc = document.getElementsByClassName('switch-type-desc')[0]
-	const phoneWrap = document.getElementById('login-by-phone')
-	const codeWrap = document.getElementById('login-by-code')
-
-	let type = 'phone' // 登录类型 默认为手机号登录 支持 phone|code 俩种形式
-
-	switchType.addEventListener('click', () => { // 点击切换登录方式
-		phoneWrap.classList.toggle('active')
-		codeWrap.classList.toggle('active')
-		switchTypeDesc.classList.toggle('code')
-		switchTypeDesc.classList.toggle('phone')
-		if (type === 'phone') { // 当前为手机号登录
-			type = 'code'
-			switchTypeDesc.innerHTML = i18n.MULTI_AA0100
-		} else if (type === 'code') { // 当前为店铺编码登录
-			type = 'phone'
-			switchTypeDesc.innerHTML = i18n.MULTI_AA0099
-		}
-	})
-
-	let isLoading = false // 避免重复发起多次登录请求
-
-	function logIn() {
-		const search = qs.parse(window.location.search)
-
-		if (isLoading) {
-			return
-		}
-
-		if (type === 'phone') { // 手机号登录
-			const username = document.getElementById('phone-number').value.trim()
-			const password = document.getElementById('phone-password').value.trim()
-			if (username && password) {
-				isLoading = true
-				axios.post('portal/mall/login.json', {
-					type: 1,
-					username,
-					password
-				}).then(res => {
-					localStorage.setItem('X-Token', res)
-					localStorage.setItem('LogInType', type)
-					window.location.href = `./select-shop.html${window.location.search}`
-				}).catch(err => {
-					new Noty({
-						type: 'error',
-						text: err.message
-					}).show()
-					isLoading = false
-				})
-			} else {
-				message.error(i18n.MULTI_AA0101)
-				// message.info(i18n.MULTI_AA0101)
-				// new Noty({
-				// 	type: 'error',
-				// 	text: i18n.MULTI_AA0101
-				// }).show()
+			const boxs = document.querySelectorAll('.vanilla-antd-content-box')
+			for (let i = 0; i < boxs.length; i++) {
+				boxs[i].style.top = `${parseInt(boxs[i].style.top, 10) - 50}px`
 			}
-		} else if (type === 'code') { // 店铺编码登录
-			const username = document.getElementById('code-username').value.trim()
-			const password = document.getElementById('code-password').value.trim()
-			const shopCode = document.getElementById('shop-code').value.trim()
-			if (username && password && shopCode) {
-				isLoading = true
-				axios.post('portal/mall/login.json', {
-					type: 2,
-					username,
-					password,
-					shopCode
-				}).then(res => {
-					localStorage.setItem('X-Token', res)
-					localStorage.setItem('LogInType', type)
-					axios.get('portal/mall/loginUserInfo.json').then(user => {
-						localStorage.setItem('userInfo', JSON.stringify(user))
-						// 国际版页面目前只能跳转至报表页面
-						window.location.href = isForeign() ? './report.html' : `${search.src || '/'}`
-					}).catch(err => {
-						new Noty({
-							type: 'error',
-							text: err.message
-						}).show()
-					})
-				}).catch(err => {
-					new Noty({
-						type: 'error',
-						text: err.message
-					}).show()
-					isLoading = false
-				})
-			} else {
-				new Noty({
-					type: 'error',
-					text: i18n.MULTI_AA0102
-				}).show()
-			}
-		}
-	}
+			this.count--
+		}, 300)
+	}, this.duration)
+}
 
-	document.getElementById('login-btn').addEventListener('click', logIn)
-	document.body.addEventListener('keypress', e => {
-		if (e.keyCode === 13) {
-			logIn()
-		}
-	})
-})()
+Message.prototype.success = function (content) {
+	this.show(content, 'success')
+}
+
+Message.prototype.error = function (content) {
+	this.show(content, 'error')
+}
+
+Message.prototype.warn = function (content) {
+	this.show(content, 'warn')
+}
+
+Message.prototype.info = function (content) {
+	this.show(content, 'info')
+}
+
+Message.prototype.duration = 3000
+Message.prototype.count = 0
+
+export default new Message()
