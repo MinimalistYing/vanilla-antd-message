@@ -14,14 +14,16 @@
 	padding: 10px 16px;
 	border-radius: 4px;
 	box-shadow: 0 4px 12px rgba(0,0,0,.15);
-}
-.vanilla-antd-content-box.animate-in {
-	animation: fade-in .3s;
-	animation-timing-function: cubic-bezier(.08,.82,.17,1);
-}
-.vanilla-antd-content-box.animate-out {
-	animation: fade-out .3s;
-	animation-timing-function: cubic-bezier(.6,.04,.98,.34);
+
+	&.animate-in {
+		animation: fade-in .3s;
+		animation-timing-function: cubic-bezier(.08,.82,.17,1);
+	}
+
+	&.animate-out {
+		animation: fade-out .3s;
+		animation-timing-function: cubic-bezier(.6,.04,.98,.34);
+	}
 }
 .vanilla-antd-message-icon {
 	display: inline-block;
@@ -29,18 +31,18 @@
 	height: 8px;
 	margin-right: 8px;
 	border-radius: 50%;
-}
-.vanilla-antd-message-icon.info {
-	background: #1890ff;
-}
-.vanilla-antd-message-icon.success {
-	background: #52c41a;
-}
-.vanilla-antd-message-icon.error {
-	background: #f5222d;
-}
-.vanilla-antd-message-icon.warn {
-	background: #faad14;
+	&.info {
+		background: #1890ff;
+	}
+	&.success {
+		background: #52c41a;
+	}
+	&.error {
+		background: #f5222d;
+	}
+	&.warn {
+		background: #faad14;
+	}
 }
 
 @keyframes fade-in {
