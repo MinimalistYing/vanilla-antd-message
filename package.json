@@ -1,8 +1,15 @@
 {
   "name": "vanilla-antd-message",
   "version": "0.0.1",
-  "description": "Lightweight, antd like message component.Writting with vanilla Javascript.",
-  "main": "index.js",
+  "description": "Lightweight, antd like message component.Writting with vanilla Javascript.Used for display global messages on your site.",
+  "keywords": [
+    "antd",
+    "message",
+    "lightweight",
+    "ant-design"
+  ],
+  "main": "dist/index.js",
+  "style": "dist/style.css",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/MinimalistYing/vanilla-antd-message.git"
   },
-  "author": "MinimalsitYing",
+  "author": "MinimalsitYing <genius_ying@163.com> (https://minimalistying.github.io/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MinimalistYing/vanilla-antd-message/issues"
