@@ -39,15 +39,15 @@ Message.prototype.success = function (content, duration) {
 	this.show(content, duration, 'success')
 }
 
-Message.prototype.error = function (content) {
+Message.prototype.error = function (content, duration) {
 	this.show(content, duration, 'error')
 }
 
-Message.prototype.warn = function (content) {
+Message.prototype.warn = function (content, duration) {
 	this.show(content, duration, 'warn')
 }
 
-Message.prototype.info = function (content) {
+Message.prototype.info = function (content, duration) {
 	this.show(content, duration, 'info')
 }
 
