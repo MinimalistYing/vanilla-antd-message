@@ -1,8 +1,7 @@
 # vanilla-antd-message
 Lightweight(Only 5kb including Javascript and CSS before gzip), antd like message component.  
-Used for display global messages as feedback in response to user operations.
-Writting with vanilla Javascript.  
-Zero dependencies.  
+Used for display global messages on your site.
+Writting with vanilla Javascript, Zero dependencies.  
 Inspired by [Ant Design](https://ant.design/components/message/)
 
 # Demo
@@ -27,3 +26,14 @@ message.error('Error Message')
 message.warn('Warn Message')
 ```
 
+# API
+```js
+/**
+*	@params content {String} The message to show
+*   @params duration {Number} How long the message will show, default 3000ms
+**/
+message.info(content, [duration])
+message.success(content, [duration])
+message.error(content, [duration])
+message.warn(content, [duration])
+```

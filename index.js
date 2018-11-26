@@ -5,7 +5,7 @@ function Message() {
 	document.body.appendChild(antmessage)
 }
 
-Message.prototype.show = function (content, type = 'info') {
+Message.prototype.show = function (content, duration = 3000, type = 'info') {
 	const contentBox = document.createElement('div')
 	const contentDom = document.createElement('span')
 	const icon = document.createElement('i')
@@ -32,26 +32,25 @@ Message.prototype.show = function (content, type = 'info') {
 			}
 			this.count--
 		}, 300)
-	}, this.duration)
+	}, duration)
 }
 
-Message.prototype.success = function (content) {
-	this.show(content, 'success')
+Message.prototype.success = function (content, duration) {
+	this.show(content, duration, 'success')
 }
 
 Message.prototype.error = function (content) {
-	this.show(content, 'error')
+	this.show(content, duration, 'error')
 }
 
 Message.prototype.warn = function (content) {
-	this.show(content, 'warn')
+	this.show(content, duration, 'warn')
 }
 
 Message.prototype.info = function (content) {
-	this.show(content, 'info')
+	this.show(content, duration, 'info')
 }
 
-Message.prototype.duration = 3000
 Message.prototype.count = 0
 
 export default new Message()
