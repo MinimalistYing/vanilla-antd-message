@@ -1,5 +1,9 @@
 # vanilla-antd-message
-Lightweight(Only 5kb including Javascript and CSS before gzip), antd like message component.Writting with vanilla Javascript.  
+Lightweight(Only 5kb including Javascript and CSS before gzip), antd like message component.  
+Used for display global messages as feedback in response to user operations.
+Writting with vanilla Javascript.  
+Zero dependencies.  
+Inspired by [Ant Design](https://ant.design/components/message/)
 
 # Demo
 [Try it out](https://minimalistying.github.io/#/messagedemo)
@@ -7,7 +11,7 @@ Lightweight(Only 5kb including Javascript and CSS before gzip), antd like messag
 # Support
 Modern browsers and Internet Explorer 10+.
 
-# Install
+# Installation
 ```
 npm i vanilla-antd-message --save
 ```
