@@ -33,23 +33,14 @@ Message.prototype.show = function (content, duration = 3000, type = 'info') {
 			this.count--
 		}, 300)
 	}, duration)
-}
+};
 
-Message.prototype.success = function (content, duration) {
-	this.show(content, duration, 'success')
-}
-
-Message.prototype.error = function (content, duration) {
-	this.show(content, duration, 'error')
-}
-
-Message.prototype.warn = function (content, duration) {
-	this.show(content, duration, 'warn')
-}
-
-Message.prototype.info = function (content, duration) {
-	this.show(content, duration, 'info')
-}
+// API
+['success', 'error', 'warn', 'info'].map(method => {
+	Message.prototype[method] = function (content, duration) {
+		this.show(content, duration, method)
+	}
+})
 
 Message.prototype.count = 0
 
