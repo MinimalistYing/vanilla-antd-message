@@ -1,6 +1,6 @@
 {
   "name": "vanilla-antd-message",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Lightweight, antd like message component.Writting with vanilla Javascript.Used for display global messages on your site.",
   "keywords": [
     "antd",

@@ -21,6 +21,7 @@ Message.prototype.show = function (content, duration = 3000, type = 'info') {
 
 	this.count++
 
+	// remove message box after duration
 	setTimeout(() => {
 		contentBox.classList.add('animate-out')
 		setTimeout(() => {
@@ -42,6 +43,7 @@ Message.prototype.show = function (content, duration = 3000, type = 'info') {
 	}
 })
 
+// the count of messages already exist
 Message.prototype.count = 0
 
 export default new Message()
