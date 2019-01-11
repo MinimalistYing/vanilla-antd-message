@@ -31,9 +31,10 @@ message.warn('Warn Message')
 /**
 * @params content {String} The message to show
 * @params duration {Number} How long the message will show, default is 3000ms
+* @params onClose {Function} The callback function when message end
 **/
-message.info(content, [duration])
-message.success(content, [duration])
-message.error(content, [duration])
-message.warn(content, [duration])
+message.info(content, [duration], onClose)
+message.success(content, [duration], onClose)
+message.error(content, [duration], onClose)
+message.warn(content, [duration], onClose)
 ```
