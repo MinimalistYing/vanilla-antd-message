@@ -16,6 +16,7 @@ npm i vanilla-antd-message --save
 ```
 
 # Quickstart
+Using `NPM` and `Webpack` :
 ```js
 import message from 'vanilla-antd-message'
 import 'vanilla-antd-message/dist/style.css'
@@ -24,6 +25,13 @@ message.info('Info Message')
 message.success('Success Message')
 message.error('Error Message')
 message.warn('Warn Message')
+```
+Directly using through `<script>`
+```
+Message.default.info('Info Message')
+Message.default.success('Success Message')
+Message.default.error('Error Message')
+Message.default.warn('Warn Message')
 ```
 
 # API
