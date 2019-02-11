@@ -9,4 +9,8 @@ const presets = [
 	]
 ]
 
-module.exports = { presets }
+const plugins = [
+	["@babel/plugin-transform-modules-umd"]
+]
+
+module.exports = { presets, plugins, moduleId: 'Message' }

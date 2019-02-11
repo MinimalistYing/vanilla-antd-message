@@ -2,7 +2,7 @@ const dom = document.createElement('div')
 
 function Message() {
 	dom.classList.add('vanilla-antd-message')
-	document.body.appendChild(dom)
+	window.onload = () => document.body.appendChild(dom)
 }
 
 Message.prototype.show = function (content, duration = 3000, type = 'info', onClose = Function.prototype) {
