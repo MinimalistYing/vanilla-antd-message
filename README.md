@@ -5,7 +5,7 @@ Writting with vanilla Javascript, Zero dependencies.
 Inspired by [Ant Design](https://ant.design/components/message/)
 
 # Demo
-[Try it out](https://minimalistying.github.io/#/messagedemo)
+[Try it out](https://minimalistying.github.io/messagedemo.html)
 
 # Support
 Modern browsers and Internet Explorer 10+.
